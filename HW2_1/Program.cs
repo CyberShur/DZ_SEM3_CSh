@@ -2,7 +2,6 @@
 // и находит расстояние между ними в 3D пространстве.
 // A (3,6,8); B (2,1,-7), -> 15.84
 // A (7,-5, 0); B (1,-1,9) -> 11.53
-// N = √(X²+Y²+Z²)
 
 double[] CoordA =  massA();
 double[] CoordB =  massB();
@@ -37,32 +36,16 @@ double[] massB()
     return arrayB;
 }
 
-int count = 1;
+int count = 0;
 
-while (count <= CoordB.Length)
+while (count < CoordB.Length)
 {
-    if(count == 1)
-    {
-        diff[0] = CoordB[0] - CoordA[0]; 
-        diff[0] = Math.Pow(diff[0], 2);
-    } 
-    if(count == 2)
-    {
-        diff[1] = CoordB[1] - CoordA[1];
-        diff[1] = Math.Pow(diff[1], 2);
-    }
-
-    if(count == 3) 
-    {
-        diff[2] = CoordB[2] - CoordA[2];
-        diff[2] = Math.Pow(diff[2], 2);
-    }
+    diff[count] = CoordB[count] - CoordA[count]; 
+    diff[count] = Math.Pow(diff[count], 2);
     count++;
 }
 
 double result = Math.Sqrt(diff[0] + diff[1]+ diff[2]);
 double resultNew = Math.Round(result, 2);
 
-Console.WriteLine(resultNew);
-
-
+Console.WriteLine($"Расстояние между точками равно - {resultNew}");
